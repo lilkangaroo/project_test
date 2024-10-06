@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
-import TheHeader from "@/components/TheHeader.vue";
-import TheBreadcrumbs from "@/components/TheBreadcrumbs.vue";
-import ProjectList from "./components/ProjectList.vue";
-import FeedbackForm from "@/components/FeedbackForm.vue";
-import TheFooter from "@/components/TheFooter.vue";
+import TheHeader from '@/components/TheHeader.vue';
+import TheBreadcrumbs from '@/components/TheBreadcrumbs.vue';
+import ProjectList from './components/ProjectList.vue';
+import FeedbackForm from '@/components/FeedbackForm.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 export default {
   components: {
@@ -34,11 +34,11 @@ export default {
     async fetchProjects() {
       try {
         const response = await axios.get(
-          "https://api.test.cyberia.studio/api/v1/projects"
+          'https://api.test.cyberia.studio/api/v1/projects',
         );
         this.projects = response.data.items;
-      } catch (e) {
-        alert("Ошибка загрузки проектов");
+      } catch {
+        alert('Ошибка загрузки проектов');
       }
     },
   },

@@ -1,11 +1,10 @@
 <template>
-  <section>
-    <div class="project">
-      <h2>{{ project.title }}</h2>
-      <img :src="project.image" alt="logo" />
-    </div>
+  <section class="project">
+    <h2 class="project__title">{{ project.title }}</h2>
+    <img class="project__image" :src="project.image" alt="logo" />
   </section>
 </template>
+
 <script>
 export default {
   props: {
@@ -16,4 +15,5 @@ export default {
   },
 };
 </script>
+
 <style lang="scss"></style>
