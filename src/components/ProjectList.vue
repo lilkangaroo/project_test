@@ -1,13 +1,15 @@
 <template>
-  <section class="projects">
-    <h1 class="projects__title">Кейсы</h1>
+  <section class="">
+    <h1>Кейсы</h1>
     <ProjectCategories @selectedCategory="selectCategory" />
-    <TheProject
-      class="project"
-      v-for="project in filterProjects"
-      :key="project.id"
-      :project="project"
-    />
+    <div class="projects">
+      <TheProject
+        class="projects__item"
+        v-for="project in filterProjects"
+        :key="project.id"
+        :project="project"
+      />
+    </div>
   </section>
 </template>
 
@@ -49,4 +51,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 50px 0 0 0;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="categories">
     <button
-      class="categories__item"
+      class="categories__category"
       :class="{ selected: category.id === selectedCategory }"
       v-for="category in project_categories"
       :key="category.id"
@@ -49,12 +49,12 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  &__item {
+  &__category {
     background-color: $backgroud-button;
     color: $color-text;
     border: none;
     padding: 10px 25px;
-    border-radius: 5px;
+    border-radius: 7px;
     font-family: $base-font;
     font-size: $button-size;
     transition: background-color 0.5s;
