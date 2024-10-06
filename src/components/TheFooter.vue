@@ -21,9 +21,4 @@
   </footer>
 </template>
 <script></script>
-<style>
-.footer {
-  height: 400px;
-  background-color: #313341;
-}
-</style>
+<style lang="scss"></style>

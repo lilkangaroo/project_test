@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
@@ -20,16 +20,16 @@ export default {
   },
   methods: {
     selectCategory(categoryID) {
-      this.$emit("selectedCategory", categoryID);
+      this.$emit('selectedCategory', categoryID);
     },
     async fetchCategories() {
       try {
         const response = await axios.get(
-          "https://api.test.cyberia.studio/api/v1/project-categories"
+          'https://api.test.cyberia.studio/api/v1/project-categories',
         );
         this.project_categories = response.data.items;
-      } catch (e) {
-        alert("Ошибка загрузки категорий проекта");
+      } catch {
+        alert('Ошибка загрузки категорий проекта');
       }
     },
   },
@@ -38,4 +38,4 @@ export default {
   },
 };
 </script>
-<style></style>
+<style lang="scss"></style>

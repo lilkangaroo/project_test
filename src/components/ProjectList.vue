@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import TheProject from "./TheProject.vue";
-import ProjectCategories from "./ProjectCategories.vue";
+import TheProject from './TheProject.vue';
+import ProjectCategories from './ProjectCategories.vue';
 
 export default {
   components: { TheProject, ProjectCategories },
@@ -40,8 +40,8 @@ export default {
       } else {
         return this.projects.filter((project) =>
           project.categories.some(
-            (category) => category.id === this.selectedCategoryID
-          )
+            (category) => category.id === this.selectedCategoryID,
+          ),
         );
       }
     },
@@ -49,4 +49,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>

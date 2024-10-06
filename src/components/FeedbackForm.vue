@@ -64,16 +64,16 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
     return {
       formData: {
-        userName: "",
-        userEmail: "",
-        telNo: "",
-        userMessage: "",
+        userName: '',
+        userEmail: '',
+        telNo: '',
+        userMessage: '',
         userApproval: false,
       },
       errors: {
@@ -88,10 +88,10 @@ export default {
   methods: {
     clearForm() {
       this.formData = {
-        userName: "",
-        userEmail: "",
-        telNo: "",
-        userMessage: "",
+        userName: '',
+        userEmail: '',
+        telNo: '',
+        userMessage: '',
         userApproval: false,
       };
       this.errors = {
@@ -107,23 +107,23 @@ export default {
       let valid = true;
 
       if (!this.formData.userName) {
-        this.errors.userName = "Имя";
+        this.errors.userName = 'Имя';
         valid = false;
       }
       if (!this.formData.userEmail) {
-        this.errors.userEmail = "Email";
+        this.errors.userEmail = 'Email';
         valid = false;
       }
       if (!this.formData.telNo) {
-        this.errors.telNo = "Телефон";
+        this.errors.telNo = 'Телефон';
         valid = false;
       }
       if (!this.formData.userMessage) {
-        this.errors.userMessage = "Сообщение";
+        this.errors.userMessage = 'Сообщение';
         valid = false;
       }
       if (!this.formData.userApproval) {
-        this.errors.userApproval = "Согласие на обработку персональных данных.";
+        this.errors.userApproval = 'Согласие на обработку персональных данных.';
         valid = false;
       }
 
@@ -133,19 +133,19 @@ export default {
       if (!this.validate()) return;
 
       try {
-        await axios.post("https://api.test.cyberia.studio/api/v1/feedbacks", {
+        await axios.post('https://api.test.cyberia.studio/api/v1/feedbacks', {
           name: this.formData.userName,
           email: this.formData.userEmail,
           phone: this.formData.telNo,
           message: this.formData.userMessage,
         });
-        alert("Обращение принято!");
+        alert('Обращение принято!');
         this.clearForm();
       } catch (error) {
         if (error.response && error.response.status === 422) {
           this.handleServerValidationErrors(error.response.data.errors);
         } else {
-          alert("Произошла ошибка при отправке формы.");
+          alert('Произошла ошибка при отправке формы.');
         }
       }
     },
@@ -172,4 +172,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>

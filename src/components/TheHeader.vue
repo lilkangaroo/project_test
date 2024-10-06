@@ -15,7 +15,7 @@
 
 <script></script>
 
-<style>
+<style lang="scss">
 .header {
   height: 100px;
   background-color: #24252f;
