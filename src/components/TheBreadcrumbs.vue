@@ -1,5 +1,9 @@
 <template>
-  <p>Главная / Кейсы</p>
+  <p class="bread-crumbs">Главная / Кейсы</p>
 </template>
 <script></script>
-<style lang="scss"></style>
+<style lang="scss">
+.bread-crumbs {
+  padding-top: 50px;
+}
+</style>

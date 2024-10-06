@@ -1,5 +1,5 @@
 <template>
-  <h2>Расскажите о вашем проекте:</h2>
+  <h1>Расскажите о вашем проекте:</h1>
   <form @submit.prevent="submitForm">
     <div>
       <label for="userName">Ваше имя*</label>

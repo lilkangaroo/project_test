@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <h1>Кейсы</h1>
+  <section class="projects">
+    <h1 class="projects__title">Кейсы</h1>
     <ProjectCategories @selectedCategory="selectCategory" />
     <TheProject
       class="project"
