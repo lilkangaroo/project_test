@@ -7,7 +7,7 @@
   margin: 50px 0 50px 0;
 
   @media (max-width: 480px) {
-    margin: 20px 0 50px 0;
+    margin: 50px 0 40px 20px;
   }
 }
 </style>

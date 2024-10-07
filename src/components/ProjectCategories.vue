@@ -70,11 +70,11 @@ export default {
     }
   }
   @media (max-width: 480px) {
-    justify-content: space-around;
+    margin-right: 20px;
 
     &__category {
-      width: 45%;
-      margin-bottom: 15px;
+      width: 48%;
+      margin-bottom: 20px;
       padding: 12px;
       text-align: center;
       font-family: $mob-font;

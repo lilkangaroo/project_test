@@ -1,5 +1,5 @@
 <template>
-  <section class="">
+  <section class="section-proj">
     <h1>Кейсы</h1>
     <ProjectCategories @selectedCategory="selectCategory" />
     <div class="projects">
@@ -58,5 +58,13 @@ export default {
   justify-content: space-between;
   gap: 5px;
   padding: 50px 0 0 0;
+}
+@media (max-width: 480px) {
+  .section-proj {
+    padding-left: 20px;
+  }
+  .projects {
+    padding: 20px 0 0 0;
+  }
 }
 </style>

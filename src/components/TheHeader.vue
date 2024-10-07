@@ -19,7 +19,8 @@
 
 <style lang="scss">
 .header {
-  margin: 50px 200px 0;
+  width: 100%;
+  padding: 50px 200px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,6 +44,20 @@
     &:hover {
       color: $color-nav-hover;
       transform: scale(1.2);
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0;
+    width: 100%;
+    align-items: center;
+    background-color: #20212c;
+
+    &__logo {
+      margin: 30px 0px 30px 20px;
+      align-self: flex-start;
+      width: 100px;
+      height: auto;
     }
   }
 }
