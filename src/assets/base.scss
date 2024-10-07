@@ -36,6 +36,7 @@ button {
 
 @media (max-width: 480px) {
   body {
+    width: 100%;
     font-family: $mob-font;
     font-size: $text-size-mob;
   }
