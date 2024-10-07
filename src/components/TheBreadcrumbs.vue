@@ -4,6 +4,10 @@
 <script></script>
 <style lang="scss">
 .bread-crumbs {
-  margin: 50px 0 100px 0;
+  margin: 50px 0 50px 0;
+
+  @media (max-width: 480px) {
+    margin: 20px 0 50px 0;
+  }
 }
 </style>

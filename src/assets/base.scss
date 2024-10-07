@@ -8,12 +8,16 @@ body {
   background: linear-gradient(
     180deg,
     $background-color 15%,
-    $background-gradient-light 50%,
-    $background-gradient-middle 100%
+    $background-gradient-light 30%,
+    $background-gradient-middle 60%
   );
 
   color: $color-text;
   font-family: $base-font;
+  font-size: $text-size;
+}
+
+p {
   font-size: $text-size;
 }
 
@@ -24,4 +28,29 @@ a {
 
 h1 {
   font-size: $h1-size;
+}
+
+button {
+  font-family: $base-font;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-family: $mob-font;
+    font-size: $text-size-mob;
+  }
+
+  p {
+    font-size: $text-size-mob;
+  }
+
+  h1 {
+    font-size: $h1-size-mob;
+  }
+
+  button {
+    font-family: $mob-font;
+    font-size: $button-size-mob;
+    padding: 10px 15px;
+  }
 }

@@ -43,11 +43,13 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .categories {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   &__category {
     background-color: $backgroud-button;
@@ -60,11 +62,27 @@ export default {
     transition: background-color 0.5s;
 
     &.selected {
-      background-color: $background-button-hover;
+      background-color: $color-button-form;
     }
 
     &:hover {
       background-color: $background-button-hover;
+    }
+  }
+  @media (max-width: 480px) {
+    justify-content: space-around;
+
+    &__category {
+      width: 45%;
+      margin-bottom: 15px;
+      padding: 12px;
+      text-align: center;
+      font-family: $mob-font;
+      font-size: $button-size-mob;
+
+      &.selected {
+        background-color: $color-button-form;
+      }
     }
   }
 }

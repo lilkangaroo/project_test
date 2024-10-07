@@ -55,5 +55,10 @@ export default {
   margin: 0px 200px 0;
   flex-grow: 1;
   flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    margin: 0px;
+    width: 100%;
+  }
 }
 </style>
