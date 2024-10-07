@@ -4,6 +4,6 @@
 <script></script>
 <style lang="scss">
 .bread-crumbs {
-  padding-top: 50px;
+  margin: 50px 0 100px 0;
 }
 </style>

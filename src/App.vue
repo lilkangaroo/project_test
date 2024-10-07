@@ -1,9 +1,11 @@
 <template>
   <div class="app">
     <TheHeader />
-    <TheBreadcrumbs />
-    <ProjectList :projects="projects" />
-    <FeedbackForm />
+    <div class="container">
+      <TheBreadcrumbs />
+      <ProjectList :projects="projects" />
+      <FeedbackForm />
+    </div>
     <TheFooter />
   </div>
 </template>
@@ -48,4 +50,10 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.container {
+  margin: 0px 200px 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+</style>
