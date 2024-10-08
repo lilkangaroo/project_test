@@ -4,8 +4,9 @@
       class="project__background-img"
       :style="{ backgroundImage: `url(${project.image})` }"
     >
+      <img class="project__image-corner-white" src="../img/corner_white.svg" />
       <h2 class="project__project-title">{{ project.title }}</h2>
-      <img class="project__image-corner" src="../img/corner.png" />
+      <img class="project__image-corner-blue" src="../img/corner.png" />
     </div>
   </section>
 </template>
@@ -21,7 +22,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .project {
   &__background-img {
     width: 387px;
@@ -50,11 +51,58 @@ export default {
     text-align: center;
   }
 
-  &__image-corner {
+  &__image-corner-blue {
     position: absolute;
     top: 15px;
     right: 15px;
     height: auto;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  &__image-corner-white {
+    display: none;
+
+    @media (max-width: 480px) {
+      position: absolute;
+      padding: 260px 0px 0px 20px;
+      height: auto;
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__background-img {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #15161c);
+        border-radius: 0 0 10px 10px;
+        pointer-events: none;
+      }
+    }
+
+    &__project-title {
+      background-color: transparent;
+      color: $color-text-white;
+      padding: 0;
+      position: absolute;
+
+      left: 20px;
+      bottom: 10px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+      font-size: $cont-size-mob;
+    }
   }
 }
 </style>
