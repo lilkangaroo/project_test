@@ -81,8 +81,8 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
-        height: 20%;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #15161c);
+        height: 30%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #0b0c0f);
         border-radius: 0 0 10px 10px;
         pointer-events: none;
       }
