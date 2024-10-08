@@ -1,13 +1,27 @@
 <template>
   <section class="form">
-    <h1>
-      Расскажите <br />
-      о вашем проекте:
-    </h1>
+    <div class="form__header">
+      <img
+        v-if="isMobile"
+        src="../img/form_img.png"
+        alt="Описание картинки"
+        class="form__image"
+      />
+      <h1>
+        Расскажите <br />
+        о вашем проекте:
+      </h1>
+    </div>
     <form @submit.prevent="submitForm" class="form__container">
       <div class="form__input-group">
         <div class="form__group">
-          <label for="userName" class="form__label">Ваше имя*</label>
+          <label
+            for="userName"
+            class="form__label"
+            :class="{ 'form__label--hidden': isMobile && formData.userName }"
+          >
+            Ваше имя*
+          </label>
           <input
             id="userName"
             type="text"
@@ -17,7 +31,13 @@
           />
         </div>
         <div class="form__group">
-          <label for="userEmail" class="form__label">Email*</label>
+          <label
+            for="userEmail"
+            class="form__label"
+            :class="{ 'form__label--hidden': isMobile && formData.userEmail }"
+          >
+            Email*
+          </label>
           <input
             id="userEmail"
             type="email"
@@ -27,7 +47,13 @@
           />
         </div>
         <div class="form__group">
-          <label for="telNo" class="form__label">Телефон*</label>
+          <label
+            for="telNo"
+            class="form__label"
+            :class="{ 'form__label--hidden': isMobile && formData.telNo }"
+          >
+            Телефон*
+          </label>
           <input
             id="telNo"
             type="tel"
@@ -38,7 +64,13 @@
         </div>
       </div>
       <div class="form__group form__message">
-        <label for="userMessage" class="form__label">Сообщение*</label>
+        <label
+          for="userMessage"
+          class="form__label"
+          :class="{ 'form__label--hidden': isMobile && formData.userMessage }"
+        >
+          Сообщение*
+        </label>
         <textarea
           id="userMessage"
           v-model="formData.userMessage"
@@ -46,16 +78,19 @@
           class="form__input form__input--message"
         ></textarea>
       </div>
-      <div class="form__checkbox">
-        <input
-          id="userApproval"
-          type="checkbox"
-          v-model="formData.userApproval"
-          class="form__input-checkbox"
-        />
-        <label for="userApproval" class="form__label form__label--checkbox">
-          Согласие на обработку персональных данных
-        </label>
+
+      <div v-if="!isMobile">
+        <div class="form__checkbox">
+          <input
+            id="userApproval"
+            type="checkbox"
+            v-model="formData.userApproval"
+            class="form__input-checkbox"
+          />
+          <label for="userApproval" class="form__label form__label--checkbox">
+            Согласие на обработку персональных данных
+          </label>
+        </div>
       </div>
 
       <div v-if="hasErrors" class="form__error-messages">
@@ -72,7 +107,13 @@
         </ul>
       </div>
 
-      <button type="submit" class="form__button">Обсудить проект</button>
+      <button type="submit" class="form__button">
+        {{ isMobile ? 'ОТПРАВИТЬ' : 'Обсудить проект' }}
+      </button>
+
+      <p v-if="isMobile" class="form__consent-text">
+        Нажимая “Отправить”, Вы даете согласие на обработку персональных данных.
+      </p>
     </form>
   </section>
 </template>
@@ -97,9 +138,16 @@ export default {
         userMessage: null,
         userApproval: null,
       },
+      isMobile: false,
     };
   },
+  created() {
+    this.checkIfMobile();
+  },
   methods: {
+    checkIfMobile() {
+      this.isMobile = window.innerWidth <= 480;
+    },
     clearForm() {
       this.formData = {
         userName: '',
@@ -121,23 +169,25 @@ export default {
       let valid = true;
 
       if (!this.formData.userName) {
-        this.errors.userName = 'Имя';
+        this.errors.userName = 'Имя обязательно для заполнения.';
         valid = false;
       }
       if (!this.formData.userEmail) {
-        this.errors.userEmail = 'Email';
+        this.errors.userEmail = 'Email обязателен для заполнения.';
         valid = false;
       }
       if (!this.formData.telNo) {
-        this.errors.telNo = 'Телефон';
+        this.errors.telNo = 'Телефон обязателен для заполнения.';
         valid = false;
       }
       if (!this.formData.userMessage) {
-        this.errors.userMessage = 'Сообщение';
+        this.errors.userMessage = 'Сообщение обязательно для заполнения.';
         valid = false;
       }
-      if (!this.formData.userApproval) {
-        this.errors.userApproval = 'Согласие на обработку персональных данных.';
+
+      if (!this.isMobile && !this.formData.userApproval) {
+        this.errors.userApproval =
+          'Необходимо согласие на обработку персональных данных.';
         valid = false;
       }
 
@@ -145,6 +195,10 @@ export default {
     },
     async submitForm() {
       if (!this.validate()) return;
+
+      if (this.isMobile) {
+        this.formData.userApproval = true;
+      }
 
       try {
         await axios.post('https://api.test.cyberia.studio/api/v1/feedbacks', {
@@ -188,6 +242,26 @@ export default {
 
 <style lang="scss">
 .form {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 480px) {
+      flex-direction: row;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @media (max-width: 480px) {
+      display: block;
+      width: 50px;
+      height: auto;
+    }
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -221,6 +295,12 @@ export default {
     color: $color-text;
     pointer-events: none;
     transition: 0.2s;
+    background-color: $background-color;
+
+    @media (max-width: 480px) {
+      top: 50%;
+      left: 15px;
+    }
   }
 
   &__input {
@@ -267,6 +347,13 @@ export default {
     font-size: $text-size;
     width: 200px;
     height: 50px;
+  }
+
+  &__consent-text {
+    margin-top: 10px;
+    font-size: $text-size;
+    color: $color-text;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
