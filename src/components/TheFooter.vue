@@ -27,6 +27,7 @@
     </div>
   </footer>
 </template>
+
 <script></script>
 
 <style lang="scss">
@@ -69,25 +70,55 @@
     margin: 0 10px;
   }
 }
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
   .footer {
-    padding: 50px 0; /* Уменьшаем отступы для мобильной версии */
+    padding: 20px 0;
+    height: 440px;
   }
 
   .footer__container {
-    flex-direction: column; /* Вертикальное расположение для мобильных устройств */
-    align-items: center; /* Центрируем содержимое */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .org {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__logofooter {
+      width: 100px;
+      height: auto;
+    }
   }
 
   .cont-nav-wrapper {
-    flex-direction: column; /* Меняем направление на колонку для мобильных устройств */
-    align-items: center; /* Центрируем содержимое */
-    gap: 30px; /* Увеличиваем отступы между контактами и навигацией */
-    width: 100%; /* Занимаем всю ширину */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
   }
 
+  .contacts,
   .navigation {
-    align-items: center; /* Центрируем навигацию для мобильных устройств */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+  }
+
+  .contacts__item {
+    margin: 0;
+    padding: 10px 0px 20px 20px;
+    text-align: left;
+    width: 130px;
+  }
+  .navigation__item {
+    text-align: left;
   }
 }
 </style>

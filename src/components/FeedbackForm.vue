@@ -18,7 +18,9 @@
           <label
             for="userName"
             class="form__label"
-            :class="{ 'form__label--hidden': isMobile && formData.userName }"
+            :class="{
+              'form__label--hidden': isMobile && formData.userName !== '',
+            }"
           >
             Ваше имя*
           </label>
@@ -34,7 +36,9 @@
           <label
             for="userEmail"
             class="form__label"
-            :class="{ 'form__label--hidden': isMobile && formData.userEmail }"
+            :class="{
+              'form__label--hidden': isMobile && formData.userEmail !== '',
+            }"
           >
             Email*
           </label>
@@ -50,7 +54,9 @@
           <label
             for="telNo"
             class="form__label"
-            :class="{ 'form__label--hidden': isMobile && formData.telNo }"
+            :class="{
+              'form__label--hidden': isMobile && formData.telNo !== '',
+            }"
           >
             Телефон*
           </label>
@@ -67,7 +73,9 @@
         <label
           for="userMessage"
           class="form__label"
-          :class="{ 'form__label--hidden': isMobile && formData.userMessage }"
+          :class="{
+            'form__label--hidden': isMobile && formData.userMessage !== '',
+          }"
         >
           Сообщение*
         </label>
@@ -249,12 +257,13 @@ export default {
 
     @media (max-width: 480px) {
       flex-direction: row;
+      align-items: center;
+      padding-bottom: 20px;
     }
   }
 
   &__image {
     display: none;
-
     @media (max-width: 480px) {
       display: block;
       width: 50px;
@@ -266,7 +275,11 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
+
+    @media (max-width: 480px) {
+      margin-bottom: 10px;
+    }
   }
 
   &__input-group {
@@ -288,19 +301,16 @@ export default {
 
   &__label {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 15px;
     transform: translateY(-50%);
     font-size: 14px;
     color: $color-text;
     pointer-events: none;
     transition: 0.2s;
+    z-index: 1;
     background-color: $background-color;
-
-    @media (max-width: 480px) {
-      top: 50%;
-      left: 15px;
-    }
+    padding: 0 5px;
   }
 
   &__input {
@@ -358,6 +368,27 @@ export default {
 
   @media (max-width: 480px) {
     padding: 20px;
+
+    .form__label {
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      z-index: 0;
+      background-color: transparent;
+      padding: 0;
+
+      &.form__label--hidden {
+        top: -10px;
+        font-size: $text-size-mob;
+        color: $color-text;
+      }
+    }
+
+    .form__input:focus + .form__label,
+    .form__input:not(:placeholder-shown) + .form__label {
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 </style>
