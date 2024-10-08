@@ -53,7 +53,7 @@
           v-model="formData.userApproval"
           class="form__input-checkbox"
         />
-        <label for="userApproval" class="form__label">
+        <label for="userApproval" class="form__label form__label--checkbox">
           Согласие на обработку персональных данных
         </label>
       </div>
@@ -214,17 +214,13 @@ export default {
 
   &__label {
     position: absolute;
-    top: -10px;
-    left: 10px;
-    background-color: $background-color;
-    padding: 0 5px;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
     font-size: 14px;
     color: $color-text;
-
-    @media (max-width: 480px) {
-      font-size: 12px;
-      top: -8px;
-    }
+    pointer-events: none;
+    transition: 0.2s;
   }
 
   &__input {
@@ -235,22 +231,13 @@ export default {
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
+    font-size: $text-size-mob;
 
-    &--invalid {
-      border-color: $color-error;
-    }
-
-    &--message {
-      width: 100%;
-      height: 150px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 10px; /* Уменьшаем внутренние отступы */
-
-    &--message {
-      height: 100px; /* Уменьшаем высоту для мобильных */
+    &:focus + .form__label,
+    &:not(:placeholder-shown) + .form__label {
+      top: -10px;
+      font-size: $text-size-mob;
+      color: $color-text;
     }
   }
 
@@ -259,9 +246,12 @@ export default {
     align-items: center;
     gap: 10px;
 
-    .form__label {
+    .form__label--checkbox {
       position: static;
       background-color: transparent;
+      margin: 0;
+      color: $color-text;
+      font-size: $text-size-mob;
     }
   }
 
@@ -280,27 +270,7 @@ export default {
   }
 
   @media (max-width: 480px) {
-    width: 150px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  &__error-messages {
-    color: $color-error;
-  }
-
-  &__error-text {
-    margin-bottom: 10px;
-  }
-  @media (max-width: 480px) {
-    &__container {
-      margin-bottom: 40px;
-      gap: 15px;
-    }
-
-    &__group {
-      margin-bottom: 15px;
-    }
+    padding: 20px;
   }
 }
 </style>

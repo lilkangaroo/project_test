@@ -69,4 +69,25 @@
     margin: 0 10px;
   }
 }
+@media (max-width: 768px) {
+  .footer {
+    padding: 50px 0; /* Уменьшаем отступы для мобильной версии */
+  }
+
+  .footer__container {
+    flex-direction: column; /* Вертикальное расположение для мобильных устройств */
+    align-items: center; /* Центрируем содержимое */
+  }
+
+  .cont-nav-wrapper {
+    flex-direction: column; /* Меняем направление на колонку для мобильных устройств */
+    align-items: center; /* Центрируем содержимое */
+    gap: 30px; /* Увеличиваем отступы между контактами и навигацией */
+    width: 100%; /* Занимаем всю ширину */
+  }
+
+  .navigation {
+    align-items: center; /* Центрируем навигацию для мобильных устройств */
+  }
+}
 </style>
